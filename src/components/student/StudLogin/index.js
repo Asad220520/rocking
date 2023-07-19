@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.scss";
 import { FcGoogle } from "react-icons/fc";
-import { BsEyeSlash, BsTwitter } from "react-icons/bs";
-import { AiOutlineMail } from "react-icons/ai";
+import { BsTwitter } from "react-icons/bs";
+import {
+  AiOutlineEye,
+  AiOutlineEyeInvisible,
+  AiOutlineMail,
+} from "react-icons/ai";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 const StudLogin = () => {
+  const [glaza, setGlaza] = useState(true);
   return (
     <div id="login">
       <div className="container">
@@ -18,24 +23,43 @@ const StudLogin = () => {
               <input type="email" required />
               <AiOutlineMail className="icon" />
             </div>
-            <div className="login__block-input">
-              <label htmlFor="al">Пароль</label>
-              <input type="password" />
-              <RiLockPasswordFill className="icon" />
-              <BsEyeSlash className="glaza" />
-            </div>
+            {glaza ? (
+              <div className="login__block-input">
+                <label htmlFor="al">Пароль</label>
+                <input type="password" />
+                <RiLockPasswordFill className="icon" />
+                <AiOutlineEyeInvisible
+                  className="glaza"
+                  onClick={() => setGlaza(!glaza)}
+                />
+              </div>
+            ) : (
+              <div className="login__block-input">
+                <label htmlFor="al">Пароль</label>
+                <input type="text" />
+                <RiLockPasswordFill className="icon" />
+                <AiOutlineEye
+                  className="glaza"
+                  onClick={() => setGlaza(!glaza)}
+                />
+              </div>
+            )}
             <div className="login__block-btn">
               <p style={{ width: "300px" }}>
                 У вас нет учетной записи?{" "}
-                <Link to={"/studRegistr"}>Создайте учетную запись!</Link>
+                <Link to={"/studRegistr"}>
+                  <span>Создайте учетную запись!</span>
+                </Link>
               </p>
-              <h4 style={{ width: "180px" }}>Забыли пароль?</h4>
+              <Link to={'/forgatPassStud'} style={{ width: "180px" }}>
+                <h4>Забыли пароль?</h4>
+              </Link>
             </div>
             <div className="login__block-button">
               <button>Войти</button>
               <Link to={"/repLogin"}>
                 <button
-                  style={{ background: "none", border: "1px solid #fff" }}
+                className="btn"
                 >
                   Я не студент!
                 </button>

@@ -6,16 +6,18 @@ import {
 } from "react-icons/ai";
 import { BsTwitter } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
-const RepLogin = () => {
+
+const ForgatPassRep = () => {
   const [glaza, setGlaza] = useState(true);
   return (
     <div id="login">
       <div className="container">
         <div className="login">
           <div className="login__block">
-            <h1>Вход для специалиста</h1>
+            <h1>Восстановление пароля</h1>
             <div className="login__block-input">
               <label htmlFor="al">Почта</label>
               <input type="email" required />
@@ -42,24 +44,42 @@ const RepLogin = () => {
                 />
               </div>
             )}
-            <div className="login__block-btn">
-              <p style={{ width: "300px" }}>
-                У вас нет учетной записи?{" "}
-                <Link to={"/repRegistr"}>
-                  <span>Создайте учетную запись!</span>
-                </Link>
-              </p>
-              <Link style={{ width: "180px" }} to={"/forgatPassRep"}>
-                <h4>Забыли пароль?</h4>
-              </Link>
-            </div>
+            {glaza ? (
+              <div className="login__block-input">
+                <label htmlFor="al">Подтверждение нового пароля</label>
+                <input type="password" />
+                <RiLockPasswordFill className="icon" />
+                <AiOutlineEyeInvisible
+                  className="glaza"
+                  onClick={() => setGlaza(!glaza)}
+                />
+              </div>
+            ) : (
+              <div className="login__block-input">
+                <label htmlFor="al">Подтверждение нового пароля</label>
+                <input type="text" />
+                <RiLockPasswordFill className="icon" />
+                <AiOutlineEye
+                  className="glaza"
+                  onClick={() => setGlaza(!glaza)}
+                />
+              </div>
+            )}
             <div className="login__block-button">
-              <Link to={"/repProfile"}>
-                <button>Войти</button>
+              <Link to={"/repLogin"}>
+                <button
+                  style={{
+                    display: "flex",
+                    gap: "10px",
+                    background: "none",
+                    border: "1px solid #fff",
+                  }}
+                >
+                  <MdOutlineKeyboardBackspace size={"19px"} />
+                  назад
+                </button>
               </Link>
-              <Link to={"/studLogin"}>
-                <button className="btn">Я не специалист!</button>
-              </Link>
+              <button>Войти</button>
             </div>
             <span>или</span>
             <div className="login__block-icon">
@@ -73,4 +93,4 @@ const RepLogin = () => {
   );
 };
 
-export default RepLogin;
+export default ForgatPassRep;

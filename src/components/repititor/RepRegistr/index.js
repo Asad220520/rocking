@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./index.scss";
 import { FcGoogle } from "react-icons/fc";
 import { BsTwitter } from "react-icons/bs";
 import {
@@ -9,17 +8,22 @@ import {
 } from "react-icons/ai";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { PiGenderFemaleFill } from "react-icons/pi";
-import { MdAccountCircle, MdElderly } from "react-icons/md";
+import {
+  MdAccountCircle,
+  MdAddIcCall,
+  MdElderly,
+  MdSchool,
+} from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const StudRegistr = () => {
+const RepRegistr = () => {
   const [glaza, setGlaza] = useState(true);
   return (
     <div id="studRegister">
       <div className="container">
         <div className="studRegister">
           <div className="studRegister__block">
-            <h1>Регистрация для студента</h1>
+            <h1>Регистрация для специалиста</h1>
             <div className="studRegister__block-info">
               <div style={{ width: "100%" }}>
                 <label htmlFor="al">Фио</label>
@@ -34,7 +38,7 @@ const StudRegistr = () => {
             </div>
             <div className="studRegister__block-info">
               <div style={{ width: "100%" }}>
-                <label htmlFor="al">Почта</label>
+                <span>Почта</span>
                 <PiGenderFemaleFill className="gender" />
                 <input type="email" />
               </div>
@@ -47,7 +51,12 @@ const StudRegistr = () => {
             <div className="studRegister__block-input">
               <label htmlFor="al">Номер телефона</label>
               <input type="number" />
-              <AiOutlineMail className="icon" />
+              <MdAddIcCall className="icon" />
+            </div>
+            <div className="studRegister__block-input">
+              <label htmlFor="al">Услуги</label>
+              <input type="email" />
+              <MdSchool className="icon" />
             </div>
             {glaza ? (
               <div className="studRegister__block-input">
@@ -73,18 +82,20 @@ const StudRegistr = () => {
             <div className="studRegister__block-btn">
               <p style={{ width: "300px" }}>
                 У вас уже есть учетная запись?
-                <Link to={"/studLogin"}>
+                <Link to={"/repLogin"}>
                   <span>Войти!</span>
                 </Link>
               </p>
-              <Link style={{ width: "180px" }} to={"/forgatPassstud"}>
+              <Link style={{ width: "180px" }} to={"/forgatPassRep"}>
                 <h4>Забыли пароль?</h4>
-              </Link>{" "}
+              </Link>
             </div>
             <div className="studRegister__block-button">
-              <button>Зарегистрироваться</button>
-              <Link to={"/repRegistr"}>
-                <button className="btn">Я не студент!</button>
+              <Link to={"/repProfile"}>
+                <button>Зарегистрироваться</button>
+              </Link>
+              <Link to={"/studRegistr"}>
+                <button className="btn">Я не специалист!</button>
               </Link>
             </div>
             <span>или</span>
@@ -99,4 +110,4 @@ const StudRegistr = () => {
   );
 };
 
-export default StudRegistr;
+export default RepRegistr;

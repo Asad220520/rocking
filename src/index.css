@@ -24,6 +24,9 @@ code {
   padding: 0;
   box-sizing: border-box;
 }
+a{
+  text-decoration: none;
+}
 .container{
   max-width: 1250px;
   padding: 0 15px;
