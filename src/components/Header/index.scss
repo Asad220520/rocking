@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap");
 
 #header {
   background: #fff;
@@ -10,6 +10,7 @@
     &__top {
       display: flex;
       justify-content: space-between;
+      border-bottom: 1px solid #d1d2d3;
       .logo {
         font-family: Montserrat Alternates;
         font-size: 12px;
@@ -17,7 +18,7 @@
         line-height: 16px;
         letter-spacing: 0.25em;
         text-align: left;
-        color: #263238;        
+        color: #263238;
       }
       .contact {
         display: flex;
@@ -34,21 +35,35 @@
         line-height: 24px;
         letter-spacing: 0em;
         text-align: center;
-        color: #263238;        
+        color: #263238;
       }
       .header__nav {
         display: flex;
-        gap: 10px;
+        gap: 20px;
         a {
+          position: relative;
           text-decoration: none;
           font-family: Montserrat Alternates;
           font-size: 13px;
           font-weight: 500;
           line-height: 20px;
-          letter-spacing: 0.25em;    
+          letter-spacing: 2px;
           color: #263238;
-        }
+          &::before {
+            position: absolute;
+            bottom: 0;
+            content: "";
+            width: 0%;
+            height: 0px;
+            transition: width 0.3s, height 0.3s, background-color 0.3s;
+          }
 
+          &:hover::before {
+            width: 90%;
+            height: 1px;
+            background: #000;
+          }
+        }
       }
     }
   }

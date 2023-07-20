@@ -1,5 +1,7 @@
 #studRegister {
-  padding-top: 100px;
+  background: #000;
+  padding: 150px 0;
+  height: 100vh;
   .container {
     .studRegister {
       max-width: 582px;
@@ -19,7 +21,7 @@
           width: 70%;
           position: relative;
           gap: 20px;
-           .icons {
+          .icons {
             position: absolute;
             top: 27px;
             left: 10px;
