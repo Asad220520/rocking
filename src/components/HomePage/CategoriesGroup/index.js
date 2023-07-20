@@ -12,11 +12,6 @@ const CategoriesGroup = () => {
           <CourseCard key={index} />
         ))}
       </div>
-      <div className="items">
-        {Array.from({ length: numberOfCourseCards }).map((_, index) => (
-          <CourseCard key={index} />
-        ))}
-      </div>
     </div>
   );
 };
