@@ -1,12 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap");
 
-.categoriesGroup {
+.categoriesSolo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 90px 0 250px 0;
+  margin-top: 213px;
   h1 {
     font-family: Montserrat Alternates;
     font-size: 36px;
@@ -23,7 +22,7 @@
     // flex-wrap: wrap;
     overflow-x: auto;
     margin: 0 auto;
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
       display: none;
       padding-bottom: 30px;
     }
@@ -32,11 +31,11 @@
       flex-direction: column;
       width: 295px;
       &:hover {
-          transform: scale(1.1);
-          transition: 0.5s;
-          box-shadow: 0px 0px 14px 7px rgba(219,219,219,0.75);
-          -webkit-box-shadow: 0px 0px 14px 7px rgba(219,219,219,0.75);
-          -moz-box-shadow: 0px 0px 14px 7px rgba(219,219,219,0.75);
+        transform: scale(1.1);
+        transition: 0.5s;
+        box-shadow: 0px 0px 14px 7px rgba(219, 219, 219, 0.75);
+        -webkit-box-shadow: 0px 0px 14px 7px rgba(219, 219, 219, 0.75);
+        -moz-box-shadow: 0px 0px 14px 7px rgba(219, 219, 219, 0.75);
       }
       &__top {
         display: flex;
@@ -57,19 +56,11 @@
           width: 295px;
           height: 54px;
         }
-        p {
-          font-family: Montserrat Alternates;
-          font-size: 14px;
-          font-weight: 500;
-          line-height: 17px;
-          letter-spacing: 0.014000000432133675px;
-          color: #000000;
-        }
       }
       &__bottom {
         display: flex;
         gap: 30px;
-        margin: 10px auto 14px;
+        margin: 38px auto 14px;
         .price {
           font-family: Montserrat Alternates;
           font-size: 22px;
@@ -78,7 +69,6 @@
           letter-spacing: -0.01em;
           text-align: center;
           color: #2196f3;
-          width: 111px;
         }
         .notprice {
           font-family: Montserrat Alternates;
@@ -89,7 +79,6 @@
           text-align: center;
           color: #b3b3b3;
           text-decoration: line-through;
-          width: 69px;
         }
         .mentor {
           justify-content: flex-end;

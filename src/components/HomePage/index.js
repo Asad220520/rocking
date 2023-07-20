@@ -1,12 +1,22 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Jumbotron from "./Jumbotron/index";
 import Why from "./Why/index";
 import CategoriesSolo from "./CategoriesSolo/index";
 import CategoriesGroup from "./CategoriesGroup";
+import Header from "../Header";
+import Footer from "../Footer";
 
-function homePage() {
+function HomePage() {
+  const nav = useNavigate();
+  const hideHeaderFooterRoutes = ["/studlogin", "/replogin"];
+
+  const currentPath = window.location.pathname;
+  const shouldHideHeaderFooter = hideHeaderFooterRoutes.includes(currentPath);
+
   return (
     <div id="homePage">
+      {!shouldHideHeaderFooter && <Header />}
       <div className="container">
         <div className="homePage">
           <Jumbotron />
@@ -15,8 +25,9 @@ function homePage() {
           <CategoriesGroup />
         </div>
       </div>
+      {!shouldHideHeaderFooter && <Footer />}
     </div>
   );
 }
 
-export default homePage;
+export default HomePage;

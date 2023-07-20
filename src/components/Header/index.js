@@ -4,6 +4,7 @@ import vk from "../../assets/img/VK.png";
 import fb from "../../assets/img/Facebook.png";
 import insta from "../../assets/img/Instagram.png";
 import yt from "../../assets/img/youtube.png";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
@@ -13,27 +14,25 @@ function Header() {
           <div className="header__top">
             <div className="logo">Online Academy</div>
             <div className="contact">
-              <a href="#">
+              <NavLink to={"https://vk.com/"}>
                 <img src={vk} alt="ВКонтакте" />
-              </a>
-              <a href="#">
+              </NavLink>
+              <NavLink to={"https://ru-ru.facebook.com/"}>
                 <img src={fb} alt="Facebook" />
-              </a>
-              <a href="#">
+              </NavLink>
+              <NavLink to={"https://www.instagram.com/"}>
                 <img src={insta} alt="Instagram" />
-              </a>
-              <a href="#">
+              </NavLink>
+              <NavLink to={"https://www.youtube.com/"}>
                 <img src={yt} alt="Youtube" />
-              </a>
+              </NavLink>
             </div>
           </div>
           <div className="header__bottom">
             <span className="header__text">УЧИТЬСЯ ЛЕГКО</span>
             <nav className="header__nav">
-              <a href="#">Главная</a>
-              <a href="#categoriesSolo">
-                Индивидуальные уроки
-              </a>
+              <NavLink to={"/"}>Главная</NavLink>
+              <a href="#categoriesSolo">Индивидуальные уроки</a>
               <a href="#categoriesGroup">Групповые уроки</a>
               <a href="#footer">ОТЗЫВЫ</a>
             </nav>
