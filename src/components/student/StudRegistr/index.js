@@ -72,68 +72,69 @@ const StudRegistr = () => {
                 <MdElderly className="elderly" />
                 <input type="text" />
               </div>
-            <div className="studRegister__block-input">
-              <label htmlFor="email">Почта</label>
-              <input type="email" name="email" onChange={handleChange} />
-              <PiGenderFemaleFill className="gender" />
-            </div>
-            <div className="studRegister__block-input">
-              <label htmlFor="phone">Номер телефона</label>
-              <input
-                type="text"
-                name="phone"
-                pattern="[0-9]+"
-                onChange={handleChange}
-              />
-              <MdAddIcCall className="icon" />
-              <AiOutlineMail className="icon" />
-            </div>
-            {glaza ? (
               <div className="studRegister__block-input">
-                <label htmlFor="password">Пароль</label>
+                <label htmlFor="email">Почта</label>
+                <input type="email" name="email" onChange={handleChange} />
+                <PiGenderFemaleFill className="gender" />
+              </div>
+              <div className="studRegister__block-input">
+                <label htmlFor="phone">Номер телефона</label>
                 <input
-                  type="password"
-                  name="password"
+                  type="text"
+                  name="phone"
+                  pattern="[0-9]+"
                   onChange={handleChange}
                 />
-                <RiLockPasswordFill className="icon" />
-                <AiOutlineEyeInvisible
-                  className="glaza"
-                  onClick={() => setGlaza(!glaza)}
-                />
+                <MdAddIcCall className="icon" />
+                <AiOutlineMail className="icon" />
               </div>
-            ) : (
-              <div className="studRegister__block-input">
-                <label htmlFor="password">Пароль</label>
-                <input type="text" name="password" onChange={handleChange} />
-                <RiLockPasswordFill className="icon" />
-                <AiOutlineEye
-                  className="glaza"
-                  onClick={() => setGlaza(!glaza)}
-                />
+              {glaza ? (
+                <div className="studRegister__block-input">
+                  <label htmlFor="password">Пароль</label>
+                  <input
+                    type="password"
+                    name="password"
+                    onChange={handleChange}
+                  />
+                  <RiLockPasswordFill className="icon" />
+                  <AiOutlineEyeInvisible
+                    className="glaza"
+                    onClick={() => setGlaza(!glaza)}
+                  />
+                </div>
+              ) : (
+                <div className="studRegister__block-input">
+                  <label htmlFor="password">Пароль</label>
+                  <input type="text" name="password" onChange={handleChange} />
+                  <RiLockPasswordFill className="icon" />
+                  <AiOutlineEye
+                    className="glaza"
+                    onClick={() => setGlaza(!glaza)}
+                  />
+                </div>
+              )}
+              <div className="studRegister__block-btn">
+                <p style={{ width: "300px" }}>
+                  У вас уже есть учетная запись?
+                  <Link to={"/studLogin"}>
+                    <span>Войти!</span>
+                  </Link>
+                </p>
+                <Link style={{ width: "180px" }} to={"/forgatPassstud"}>
+                  <h4>Забыли пароль?</h4>
+                </Link>{" "}
               </div>
-            )}
-            <div className="studRegister__block-btn">
-              <p style={{ width: "300px" }}>
-                У вас уже есть учетная запись?
-                <Link to={"/studLogin"}>
-                  <span>Войти!</span>
+              <div className="studRegister__block-button">
+                <button onClick={handleSubmit}>Зарегистрироваться</button>
+                <Link to={"/repRegistr"}>
+                  <button className="btn">Я не студент!</button>
                 </Link>
-              </p>
-              <Link style={{ width: "180px" }} to={"/forgatPassstud"}>
-                <h4>Забыли пароль?</h4>
-              </Link>{" "}
-            </div>
-            <div className="studRegister__block-button">
-              <button onClick={handleSubmit}>Зарегистрироваться</button>
-              <Link to={"/repRegistr"}>
-                <button className="btn">Я не студент!</button>
-              </Link>
-            </div>
-            <span>или</span>
-            <div className="studRegister__block-icon">
-              <FcGoogle size={"30px"} />
-              <BsTwitter size={"30px"} />
+              </div>
+              <span>или</span>
+              <div className="studRegister__block-icon">
+                <FcGoogle size={"30px"} />
+                <BsTwitter size={"30px"} />
+              </div>
             </div>
           </div>
         </div>
