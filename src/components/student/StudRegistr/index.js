@@ -56,6 +56,7 @@ const StudRegistr = () => {
               </div>
               <div style={{ width: "100%" }}>
                 <label htmlFor="lastName">Возраст</label>
+                <label htmlFor="lastName">Фамилия</label>
                 <AiOutlineMail className="iconsemail" />
                 <input type="text" name="lastName" onChange={handleChange} />
               </div>
@@ -71,6 +72,10 @@ const StudRegistr = () => {
                 <MdElderly className="elderly" />
                 <input type="text" />
               </div>
+            <div className="studRegister__block-input">
+              <label htmlFor="email">Почта</label>
+              <input type="email" name="email" onChange={handleChange} />
+              <PiGenderFemaleFill className="gender" />
             </div>
             <div className="studRegister__block-input">
               <label htmlFor="phone">Номер телефона</label>
@@ -81,6 +86,7 @@ const StudRegistr = () => {
                 onChange={handleChange}
               />
               <MdAddIcCall className="icon" />
+              <AiOutlineMail className="icon" />
             </div>
             {glaza ? (
               <div className="studRegister__block-input">
