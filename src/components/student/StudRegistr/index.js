@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./index.scss";
 import { FcGoogle } from "react-icons/fc";
 import { BsTwitter } from "react-icons/bs";
@@ -14,6 +15,33 @@ import { Link } from "react-router-dom";
 
 const StudRegistr = () => {
   const [glaza, setGlaza] = useState(true);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    password: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/users/register-student",
+        formData
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error registering student:", error);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   return (
     <div id="studRegister">
       <div className="container">
@@ -22,37 +50,39 @@ const StudRegistr = () => {
             <h1>Регистрация для студента</h1>
             <div className="studRegister__block-info">
               <div style={{ width: "100%" }}>
-                <label htmlFor="al">Фио</label>
+                <label htmlFor="firstName">Фио</label>
                 <MdAccountCircle className="icons" />
-                <input type="text" />
+                <input type="text" name="firstName" onChange={handleChange} />
               </div>
               <div style={{ width: "100%" }}>
-                <label htmlFor="al">Возраст</label>
+                <label htmlFor="lastName">Фамилия</label>
                 <AiOutlineMail className="iconsemail" />
-                <input type="number" />
-              </div>
-            </div>
-            <div className="studRegister__block-info">
-              <div style={{ width: "100%" }}>
-                <label htmlFor="al">Почта</label>
-                <PiGenderFemaleFill className="gender" />
-                <input type="email" />
-              </div>
-              <div style={{ width: "100%" }}>
-                <label htmlFor="al">Пол</label>
-                <MdElderly className="elderly" />
-                <input type="text" />
+                <input type="text" name="lastName" onChange={handleChange} />
               </div>
             </div>
             <div className="studRegister__block-input">
-              <label htmlFor="al">Номер телефона</label>
-              <input type="number" />
+              <label htmlFor="email">Почта</label>
+              <input type="email" name="email" onChange={handleChange} />
+              <PiGenderFemaleFill className="gender" />
+            </div>
+            <div className="studRegister__block-input">
+              <label htmlFor="phone">Номер телефона</label>
+              <input
+                type="text"
+                name="phone"
+                pattern="[0-9]+"
+                onChange={handleChange}
+              />
               <AiOutlineMail className="icon" />
             </div>
             {glaza ? (
               <div className="studRegister__block-input">
-                <label htmlFor="al">Пароль</label>
-                <input type="password" />
+                <label htmlFor="password">Пароль</label>
+                <input
+                  type="password"
+                  name="password"
+                  onChange={handleChange}
+                />
                 <RiLockPasswordFill className="icon" />
                 <AiOutlineEyeInvisible
                   className="glaza"
@@ -61,8 +91,8 @@ const StudRegistr = () => {
               </div>
             ) : (
               <div className="studRegister__block-input">
-                <label htmlFor="al">Пароль</label>
-                <input type="text" />
+                <label htmlFor="password">Пароль</label>
+                <input type="text" name="password" onChange={handleChange} />
                 <RiLockPasswordFill className="icon" />
                 <AiOutlineEye
                   className="glaza"
@@ -82,7 +112,7 @@ const StudRegistr = () => {
               </Link>{" "}
             </div>
             <div className="studRegister__block-button">
-              <button>Зарегистрироваться</button>
+              <button onClick={handleSubmit}>Зарегистрироваться</button>
               <Link to={"/repRegistr"}>
                 <button className="btn">Я не студент!</button>
               </Link>
