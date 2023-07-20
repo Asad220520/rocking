@@ -10,7 +10,7 @@ import {
 } from "react-icons/ai";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { PiGenderFemaleFill } from "react-icons/pi";
-import { MdAccountCircle, MdElderly } from "react-icons/md";
+import { MdAccountCircle, MdAddIcCall, MdElderly } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const StudRegistr = () => {
@@ -55,11 +55,23 @@ const StudRegistr = () => {
                 <input type="text" name="firstName" onChange={handleChange} />
               </div>
               <div style={{ width: "100%" }}>
+                <label htmlFor="lastName">Возраст</label>
                 <label htmlFor="lastName">Фамилия</label>
                 <AiOutlineMail className="iconsemail" />
                 <input type="text" name="lastName" onChange={handleChange} />
               </div>
             </div>
+            <div className="studRegister__block-info">
+              <div style={{ width: "100%" }}>
+                <label htmlFor="email">Почта</label>
+                <input type="email" name="email" onChange={handleChange} />
+                <PiGenderFemaleFill className="gender" />
+              </div>
+              <div style={{ width: "100%" }}>
+                <label htmlFor="al">Пол</label>
+                <MdElderly className="elderly" />
+                <input type="text" />
+              </div>
             <div className="studRegister__block-input">
               <label htmlFor="email">Почта</label>
               <input type="email" name="email" onChange={handleChange} />
@@ -73,6 +85,7 @@ const StudRegistr = () => {
                 pattern="[0-9]+"
                 onChange={handleChange}
               />
+              <MdAddIcCall className="icon" />
               <AiOutlineMail className="icon" />
             </div>
             {glaza ? (

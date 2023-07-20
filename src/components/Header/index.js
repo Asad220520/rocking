@@ -32,9 +32,9 @@ function Header() {
             <span className="header__text">УЧИТЬСЯ ЛЕГКО</span>
             <nav className="header__nav">
               <NavLink to={"/"}>Главная</NavLink>
-              <a href="#categoriesSolo">Индивидуальные уроки</a>
-              <a href="#categoriesGroup">Групповые уроки</a>
-              <a href="#footer">ОТЗЫВЫ</a>
+              <NavLink to={"/categoriesSolo"}>Индивидуальные уроки</NavLink>
+              <NavLink to={"/categoriesGroup"}>Групповые уроки</NavLink>
+              <NavLink href="#footer">ОТЗЫВЫ</NavLink>
             </nav>
           </div>
         </div>

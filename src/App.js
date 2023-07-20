@@ -9,6 +9,8 @@ import RepRegistr from "./components/repititor/RepRegistr";
 import ForgatPassRep from "./components/repititor/ForgatPassRep";
 import ForgatPassStud from "./components/student/ForgatPassStud";
 import RepProfile from "./components/repititor/RepProfile";
+import CategoriGroPage from "./pages/CategoriGroPage";
+import CategoriSoloPage from "./pages/CategoriSoloPage";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/forgatPassRep" element={<ForgatPassRep />} />
           <Route path="/forgatPassStud" element={<ForgatPassStud />} />
           <Route path="/repProfile" element={<RepProfile />} />
+          <Route path="/categoriesSolo" element={<CategoriSoloPage />} />
+          <Route path="/categoriesGroup" element={<CategoriGroPage />} />
         </Routes>
       </div>
     </div>
