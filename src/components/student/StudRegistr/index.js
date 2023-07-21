@@ -34,6 +34,12 @@ const StudRegistr = () => {
     e.preventDefault();
 
     try {
+      const { email, password } = formData;
+
+      if (!email || !password) {
+        alert("Заполните все обязательные поля.");
+        return;
+      }
       const response = await axios.post(
         "http://34.34.188.208:8080/api/users/register-student",
         formData
@@ -43,10 +49,10 @@ const StudRegistr = () => {
         setModal(true);
         window.setTimeout(() => {
           setModal(false);
+          nav("/studProfile");
         }, 3000);
       }
     } catch (error) {
-      nav("/studProfile");
       console.error("Error registering student:", error);
       alert("Error registering student:");
     }
