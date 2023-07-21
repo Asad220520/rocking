@@ -33,6 +33,12 @@ const RepRegistr = () => {
     e.preventDefault();
 
     try {
+      const { email, password } = formData;
+
+      if (!email || !password) {
+        alert("Заполните все обязательные поля.");
+        return;
+      }
       const response = await axios.post(
         "http://34.34.188.208:8080/api/users/register-mentor",
         formData
