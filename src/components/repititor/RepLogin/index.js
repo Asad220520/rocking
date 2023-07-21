@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import {
   AiOutlineEye,
@@ -10,6 +11,27 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 const RepLogin = () => {
   const [glaza, setGlaza] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleLogin = async () => {
+    try {
+      if (!email || !password) {
+        alert("Заполните все обязательные поля.");
+        return;
+      }
+      const requestData = {
+        email: email,
+        password: password,
+      };
+      const response = await axios.post(
+        "http://localhost:8080/api/users/register-mentor",
+        requestData
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error("err", error);
+    }
+  };
   return (
     <div id="login">
       <div className="container">
@@ -18,13 +40,21 @@ const RepLogin = () => {
             <h1>Вход для специалиста</h1>
             <div className="login__block-input">
               <label htmlFor="al">Почта</label>
-              <input type="email" required />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <AiOutlineMail className="icon" />
             </div>
             {glaza ? (
               <div className="login__block-input">
                 <label htmlFor="al">Пароль</label>
-                <input type="password" />
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
                 <RiLockPasswordFill className="icon" />
                 <AiOutlineEyeInvisible
                   className="glaza"
@@ -54,9 +84,7 @@ const RepLogin = () => {
               </Link>
             </div>
             <div className="login__block-button">
-              <Link to={"/repProfile"}>
-                <button>Войти</button>
-              </Link>
+              <button onClick={handleLogin}>Войти</button>
               <Link to={"/studLogin"}>
                 <button className="btn">Я не специалист!</button>
               </Link>

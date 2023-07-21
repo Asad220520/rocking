@@ -7,7 +7,7 @@ const Jumbotron = () => {
   const nav = useNavigate();
   return (
     <div className="jumbotron">
-      <div className="left">
+      <div className="left" data-aos="fade-up">
         <div className="text">
           <h1>
             Онлайн <span id="h1">репетитор</span> к вашим услугам
@@ -19,7 +19,7 @@ const Jumbotron = () => {
         <div className="button">
           <button onClick={() => nav("/studLogin")}>Войти как ученик</button>
           <Link to={"/repLogin"}>
-            <button  className="btn">Войти как специалист</button>
+            <button className="btn">Войти как специалист</button>
           </Link>
         </div>
         <div className="scores">
@@ -39,7 +39,7 @@ const Jumbotron = () => {
           </div>
         </div>
       </div>
-      <div className="right">
+      <div className="right" data-aos="fade-down">
         <img src={jumb} alt="Kids" />
       </div>
     </div>
