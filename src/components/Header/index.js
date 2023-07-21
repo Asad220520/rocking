@@ -34,7 +34,7 @@ function Header() {
               <NavLink to={"/"}>Главная</NavLink>
               <NavLink to={"/categoriesSolo"}>Индивидуальные уроки</NavLink>
               <NavLink to={"/categoriesGroup"}>Групповые уроки</NavLink>
-              <NavLink href="#footer">ОТЗЫВЫ</NavLink>
+              <NavLink to={'k'}>ОТЗЫВЫ</NavLink>
             </nav>
           </div>
         </div>

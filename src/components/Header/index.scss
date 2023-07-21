@@ -61,8 +61,11 @@
           &:hover::before {
             width: 90%;
             height: 1px;
-            background: #000;
+            background: #2196f3;;
           }
+        }
+        .active {
+          color: #2196f3;
         }
       }
     }

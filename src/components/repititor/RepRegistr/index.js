@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
 import { BsTwitter } from "react-icons/bs";
 import {
@@ -14,10 +15,47 @@ import {
   MdElderly,
   MdSchool,
 } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { TiTick } from "react-icons/ti";
 
 const RepRegistr = () => {
+  const [modal, setModal] = useState(false);
   const [glaza, setGlaza] = useState(true);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    password: "",
+  });
+  const nav = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "http://34.34.188.208:8080/api/users/register-mentor",
+        formData
+      );
+      if (!modal) {
+        setModal(true);
+        window.setTimeout(() => {
+          setModal(false);
+          nav("/repdProfile");
+        }, 3000);
+      }
+      console.log(response.data);
+    } catch (error) {
+      alert("Error registering mentor");
+      console.error("Error registering mentor:", error);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   return (
     <div id="studRegister">
       <div className="container">
@@ -26,42 +64,38 @@ const RepRegistr = () => {
             <h1>Регистрация для специалиста</h1>
             <div className="studRegister__block-info">
               <div style={{ width: "100%" }}>
-                <label htmlFor="al">Фио</label>
+                <label htmlFor="firstName">Имя</label>
                 <MdAccountCircle className="icons" />
-                <input type="text" />
+                <input type="text" name="firstName" onChange={handleChange} />
               </div>
               <div style={{ width: "100%" }}>
-                <label htmlFor="al">Возраст</label>
+                <label htmlFor="lastName">Фамилия</label>
                 <AiOutlineMail className="iconsemail" />
-                <input type="number" />
-              </div>
-            </div>
-            <div className="studRegister__block-info">
-              <div style={{ width: "100%" }}>
-                <span>Почта</span>
-                <PiGenderFemaleFill className="gender" />
-                <input type="email" />
-              </div>
-              <div style={{ width: "100%" }}>
-                <label htmlFor="al">Пол</label>
-                <MdElderly className="elderly" />
-                <input type="text" />
+                <input type="text" name="lastName" onChange={handleChange} />
               </div>
             </div>
             <div className="studRegister__block-input">
-              <label htmlFor="al">Номер телефона</label>
-              <input type="number" />
+              <label htmlFor="email">Почта</label>
+              <input type="email" name="email" onChange={handleChange} />
+            </div>
+            <div className="studRegister__block-input">
+              <label htmlFor="phone">Номер телефона</label>
+              <input
+                type="text"
+                name="phone"
+                pattern="[0-9]+"
+                onChange={handleChange}
+              />
               <MdAddIcCall className="icon" />
-            </div>
-            <div className="studRegister__block-input">
-              <label htmlFor="al">Услуги</label>
-              <input type="email" />
-              <MdSchool className="icon" />
             </div>
             {glaza ? (
               <div className="studRegister__block-input">
-                <label htmlFor="al">Пароль</label>
-                <input type="password" />
+                <label htmlFor="password">Пароль</label>
+                <input
+                  type="password"
+                  name="password"
+                  onChange={handleChange}
+                />
                 <RiLockPasswordFill className="icon" />
                 <AiOutlineEyeInvisible
                   className="glaza"
@@ -70,8 +104,8 @@ const RepRegistr = () => {
               </div>
             ) : (
               <div className="studRegister__block-input">
-                <label htmlFor="al">Пароль</label>
-                <input type="text" />
+                <label htmlFor="password">Пароль</label>
+                <input type="text" name="password" onChange={handleChange} />
                 <RiLockPasswordFill className="icon" />
                 <AiOutlineEye
                   className="glaza"
@@ -91,12 +125,33 @@ const RepRegistr = () => {
               </Link>
             </div>
             <div className="studRegister__block-button">
-              <Link to={"/repProfile"}>
+              <Link onClick={handleSubmit} to={"/repProfile"}>
                 <button>Зарегистрироваться</button>
               </Link>
               <Link to={"/studRegistr"}>
                 <button className="btn">Я не специалист!</button>
               </Link>
+            </div>
+            <div
+              style={{
+                display: modal ? "flex" : "none",
+                justifyContent: "center",
+                alignItems: "center",
+                position: "absolute",
+                left: "37%",
+                top: "30%",
+                width: "500px",
+                height: "200px",
+                background: "#004A60",
+                zIndex: 1,
+                fontSize: "18px",
+                color: "#fff",
+                textAlign: "center",
+                borderRadius: "10px",
+              }}
+            >
+              Вы успешно зарегистрировались! <br />
+              <TiTick style={{ width: "30px", height: "30px" }} />
             </div>
             <span>или</span>
             <div className="studRegister__block-icon">
