@@ -6,6 +6,7 @@ import CategoriesSolo from "./CategoriesSolo/index";
 import CategoriesGroup from "./CategoriesGroup";
 import Header from "../Header";
 import Footer from "../Footer";
+import Comments from "./Comments";
 
 function HomePage() {
   const nav = useNavigate();
@@ -23,6 +24,7 @@ function HomePage() {
           <Why />
           <CategoriesSolo />
           <CategoriesGroup />
+          <Comments/>
         </div>
       </div>
       {!shouldHideHeaderFooter && <Footer />}
